@@ -233,6 +233,7 @@ class BaseBackend(metaclass=abc.ABCMeta):
             stderr=subprocess.PIPE,
         )
         stdout, stderr = p.communicate()
+        cmd = self.encode(command)
         result = self.result(p.returncode, cmd, stdout, stderr)
         return result
 
