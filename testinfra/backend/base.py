@@ -225,9 +225,8 @@ class BaseBackend(metaclass=abc.ABCMeta):
 
     def run_local(self, command: str, *args: str) -> CommandResult:
         command = self.quote(command, *args)
-        cmd = self.encode(command)
         p = subprocess.Popen(
-            cmd,
+            command,
             shell=True,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
